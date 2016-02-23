@@ -32,8 +32,10 @@ sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' 
 
 RUN mv /tmp/bashrc ~/.bashrc 
 
-RUN mkdir -p ~/hdfs/namenode && \ 
-mkdir -p ~/hdfs/datanode && \
+
+
+RUN mkdir -p /var/hadoop/data/namenode && \
+mkdir -p /var/hadoop/data/datanode && \
 mkdir $HADOOP_INSTALL/logs
 
 RUN mv /tmp/hdfs-site.xml $HADOOP_INSTALL/etc/hadoop/hdfs-site.xml && \ 
@@ -60,5 +62,6 @@ EXPOSE 8030 8031 8032 8033 8040 8042 8088
 #Other ports
 EXPOSE 49707 2122
 
+VOLUME ["/var/hadoop/data/namenode","/var/hadoop/data/datanode"]
 
 CMD ['/root/start-hadoop.sh', '-bash']

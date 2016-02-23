@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tag="0.1.0"
+tag="0.2.0"
 
 #docker respoistory name
 respoistory=mafzaal
